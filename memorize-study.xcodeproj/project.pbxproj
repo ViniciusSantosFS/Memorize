@@ -11,6 +11,8 @@
 		EA253B1529918F7D006A6929 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA253B1429918F7D006A6929 /* ContentView.swift */; };
 		EA253B1729918F7E006A6929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA253B1629918F7E006A6929 /* Assets.xcassets */; };
 		EA253B1A29918F7E006A6929 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA253B1929918F7E006A6929 /* Preview Assets.xcassets */; };
+		EA54604729A11A5700FCFF1A /* game.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54604629A11A5700FCFF1A /* game.model.swift */; };
+		EA54604929A11ABA00FCFF1A /* memorize.viewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54604829A11ABA00FCFF1A /* memorize.viewmodel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		EA253B1429918F7D006A6929 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EA253B1629918F7E006A6929 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA253B1929918F7E006A6929 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EA54604629A11A5700FCFF1A /* game.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = game.model.swift; sourceTree = "<group>"; };
+		EA54604829A11ABA00FCFF1A /* memorize.viewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memorize.viewmodel.swift; sourceTree = "<group>"; };
 		EAAAA6C429947E7E005AC161 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +57,8 @@
 		EA253B1129918F7D006A6929 /* memorize-study */ = {
 			isa = PBXGroup;
 			children = (
+				EA54604829A11ABA00FCFF1A /* memorize.viewmodel.swift */,
+				EA54604629A11A5700FCFF1A /* game.model.swift */,
 				EA253B1229918F7D006A6929 /* memorize_studyApp.swift */,
 				EA253B1429918F7D006A6929 /* ContentView.swift */,
 				EA253B1629918F7E006A6929 /* Assets.xcassets */,
@@ -140,6 +146,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA253B1529918F7D006A6929 /* ContentView.swift in Sources */,
+				EA54604929A11ABA00FCFF1A /* memorize.viewmodel.swift in Sources */,
+				EA54604729A11A5700FCFF1A /* game.model.swift in Sources */,
 				EA253B1329918F7D006A6929 /* memorize_studyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
