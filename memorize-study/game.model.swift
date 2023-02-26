@@ -8,25 +8,28 @@
 import Foundation
 
 
-struct Game<CardContent> {
+struct Game<CardContent: Equatable> {
     var cardsCount: Int
     var cardsContent: [CardContent]
     var cards: [Card<CardContent>] = []
+    var faceUpCardsCount = 0
     
     init(cardsCount: Int, cardsContent: [CardContent]) {
         self.cardsCount = cardsCount
         self.cardsContent = cardsContent
         
         if (cardsCount > cardsContent.count) {
-            return
+            self.cardsCount = cardsContent.count
         }
         
         self._buildDeckOfCards()
     }
     
     mutating private func _buildDeckOfCards() {
-        for index in 0...cardsCount {
-            let cardContent = cardsContent[index]
+        for index in 0..<cardsCount {
+            let randomIndex = Int.random(in: 0..<cardsCount)
+            
+            let cardContent = cardsContent[randomIndex]
         
             self.cards.insert(
                 Card(id: UUID().uuidString, content: cardContent),
@@ -41,24 +44,59 @@ struct Game<CardContent> {
     }
     
     mutating func onTapCard(_ id: String) {
+        var selectedCardIndex = -1
+        
         for index in 0..<cards.count {
             if (id == cards[index].id) {
-                let currentCardState = cards[index].isShowing
-                cards[index].isShowing = !currentCardState
+                turnCard(cardIndex: index)
+                selectedCardIndex = index
             }
         }
+        
+        if (cards[selectedCardIndex].isShowing) {
+            faceUpCardsCount += 1
+        } else {
+            faceUpCardsCount -= 1
+        }
+        
+        if (faceUpCardsCount == 2) {
+            for index in 0..<cards.count {
+                if (cards[index].isShowing && index != selectedCardIndex) {
+                    let selectedCardContent =  cards[selectedCardIndex].content
+                    
+                    if (cards[index].content == selectedCardContent) {
+                        cards[selectedCardIndex].hasMatched = true
+                        
+                        cards[index].hasMatched = true
+                    }
+                }
+            }
+        }
+        
+        if (faceUpCardsCount > 2) {
+            turnAllUnselectedCardsToFaceDown(selectedCardIndex)
+        }
+    }
+    
+    mutating private func turnCard(cardIndex: Int) {
+        let currentCardState = cards[cardIndex].isShowing
+        cards[cardIndex].isShowing = !currentCardState
+    }
+    
+    mutating private func turnAllUnselectedCardsToFaceDown(_ cardIndex: Int) {
+        for index in 0..<cards.count {
+            if (index != cardIndex) {
+                cards[index].isShowing = false
+            }
+        }
+        faceUpCardsCount = 1
     }
 }
 
 
-struct Card<CardContent> {
+struct Card<CardContent: Equatable> {
     var id: String
     var content: CardContent
     var isShowing = false
-}
-
-struct Tab {
-    var tabIcon: String
-    var tabLabel: String
-    var onTap: () -> Void
+    var hasMatched = false
 }

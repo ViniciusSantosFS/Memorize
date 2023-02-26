@@ -16,8 +16,8 @@ let fruitsCards = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍅", "🥔
 
 class MemorizeModelView: ObservableObject {
     @Published var game = Game<String>(
-        cardsCount: 10,
-        cardsContent: fruitsCards)
+        cardsCount: 20,
+        cardsContent: peopleCards)
     
     var deckOfCards: [Card<String>] {
         get {
@@ -28,4 +28,5 @@ class MemorizeModelView: ObservableObject {
     func onTapCard(_ cardId: String) {
         game.onTapCard(cardId)
     }
+    
 }
