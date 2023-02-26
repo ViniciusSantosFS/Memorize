@@ -20,35 +20,15 @@ struct ContentView: View {
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(memorizeGame.deckOfCards, id: \.id, content: {
-                        element in CardView(content: element.content, isShowingContent: element.isShowing, onTap: {
+                        element in CardView(content: element.content, isShowingContent: element.isShowing,
+                                            shouldHideCard: element.hasMatched,
+                            onTap: {
                             memorizeGame.onTapCard(element.id)
                         })
                     })
                 }
 
             }
-            
-            Spacer()
-            
-//            HStack {
-//                TabView(tabIcon: "car", tabLabel: "Vehicles", onTap: {
-//                    selectedCardsToShow = vehiclesCards
-//                    cardsColors = Color.red
-//                })
-//
-//                TabView(tabIcon: "person", tabLabel: "People", onTap: {
-//                    selectedCardsToShow = peopleCards
-//                    cardsColors = Color.blue
-//                })
-//
-//                TabView(tabIcon: "basket", tabLabel: "Fruits", onTap: {
-//                    selectedCardsToShow = fruitsCards
-//                    cardsColors = Color.green
-//                })
-//
-//            }
-//            .foregroundColor(.blue)
-//
         }
         
     }
@@ -57,11 +37,16 @@ struct ContentView: View {
 struct CardView: View {
     let content: String
     let isShowingContent: Bool
+    let shouldHideCard: Bool
     let onTap: () -> Void
     
-    
     var body: some View {
-       CardStyle
+        if (shouldHideCard) {
+         CardStyle
+                .opacity(0)
+        } else {
+            CardStyle
+        }
     }
     
     var CardStyle: some View {
@@ -78,23 +63,6 @@ struct CardView: View {
         .frame(height: 130)
         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .onTapGesture { onTap() }
-    }
-}
-
-struct TabView: View {
-    var tabIcon: String
-    var tabLabel: String
-    var onTap: () -> Void
-    
-    var body: some View {
-        VStack {
-            Button(action: onTap) {
-                Image(systemName: tabIcon)
-                    .font(.system(size: 30))
-            }
-            Text(tabLabel)
-        }
-        .padding(.horizontal)
     }
 }
 

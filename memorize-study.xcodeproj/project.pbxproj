@@ -23,7 +23,6 @@
 		EA253B1929918F7E006A6929 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EA54604629A11A5700FCFF1A /* game.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = game.model.swift; sourceTree = "<group>"; };
 		EA54604829A11ABA00FCFF1A /* memorize.viewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memorize.viewmodel.swift; sourceTree = "<group>"; };
-		EA54604A29A145C700FCFF1A /* HISTORY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HISTORY.md; sourceTree = "<group>"; };
 		EAAAA6C429947E7E005AC161 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				EAAAA6C429947E7E005AC161 /* README.md */,
-				EA54604A29A145C700FCFF1A /* HISTORY.md */,
 				EA253B1129918F7D006A6929 /* memorize-study */,
 				EA253B1029918F7D006A6929 /* Products */,
 			);
